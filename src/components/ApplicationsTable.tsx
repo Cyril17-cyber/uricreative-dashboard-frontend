@@ -14,6 +14,7 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs"; // Import day
 import React, { useState } from "react";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 
 interface JobApplication {
   id: string;
@@ -70,7 +71,7 @@ const ApplicationsTable = ({
         <Select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          style={{ marginBottom: "10px" }}
+          style={{ marginTop: "8px" }}
         >
           <MenuItem value="all">All</MenuItem>
           <MenuItem value="pending">Pending</MenuItem>
@@ -79,18 +80,20 @@ const ApplicationsTable = ({
         </Select>
 
         {/* Date Range Filters */}
-        <DatePicker
-          label="Start Date"
-          value={startDate}
-          onChange={(newDate) => setStartDate(newDate)}
-          renderInput={(params: any) => <TextField {...params} />}
-        />
-        <DatePicker
-          label="End Date"
-          value={endDate}
-          onChange={(newDate) => setEndDate(newDate)}
-          renderInput={(params: any) => <TextField {...params} />}
-        />
+        <DemoContainer components={["DatePicker"]}>
+          <DatePicker
+            label="Start Date"
+            value={startDate}
+            onChange={(newDate) => setStartDate(newDate)}
+          />
+        </DemoContainer>
+        <DemoContainer components={["DatePicker"]}>
+          <DatePicker
+            label="End Date"
+            value={endDate}
+            onChange={(newDate) => setEndDate(newDate)}
+          />
+        </DemoContainer>
       </Box>
 
       {/* Table */}
